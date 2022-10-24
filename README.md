@@ -1,5 +1,7 @@
 # TourOfHeroes
 
+This project was made following the [Tour Of Heroes tutorial](https://angular.io/tutorial) found at [Angular.io](https://angular.io/). 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
 ## Development server
