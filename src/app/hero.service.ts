@@ -16,5 +16,13 @@ export class HeroService {
     return heroes;
   }
 
+  getHero(id: number): Observable<Hero> {
+    // Assuming that a hero with the specified `id` always exists. 
+    // Error handling will be added in later in the tutorial.
+    const hero = HEROES.find(h => h.id === id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
+  }
+
   constructor(private messageService: MessageService) { }
 }
