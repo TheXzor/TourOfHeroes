@@ -14,6 +14,10 @@ export class HeroService {
 
   private heroesUrl = 'api/heroes'; // URL to web api
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Constant-Type': 'application/json' })
+  }
+
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -30,6 +34,15 @@ export class HeroService {
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
+      )
+  }
+
+  /** PUT: update the hero on the server */
+  updateHero(hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl, hero, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`updated hero id=${hero.id}`)),
+        catchError(this.handleError<any>(`updateHero`))
       )
   }
 
